@@ -48,4 +48,34 @@ public class Librarian {
             System.out.println("All books:\n" + book.toString());
         }
     }
+
+    public void removeBook(int i) {
+        allBooks.remove(i);
+        System.out.println("Successfully removed book!");
+    }
+
+    public void allAvailableBooks() {
+        int current = 0;
+        for (Book book : availableBooks) {
+            System.out.println("[" + (current++) + "] " + book.getTitle());
+        }
+    }
+
+    public void addUser(User user) {
+        users.add(user);
+        System.out.println("New user successfully added! Welcome " + user.getUsername());
+    }
+
+    public void listAllUsers() {
+        int current = 0;
+        for (User user : users) {
+            System.out.println("[" + (current++) + "] " + user.getUsername());
+        }
+    }
+
+    public void removeUser(int i) {
+        users.remove(i);
+        System.out.println("Successfully removed user!");
+    }
+
 }

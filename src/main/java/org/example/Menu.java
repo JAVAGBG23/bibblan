@@ -28,7 +28,13 @@ public class Menu {
     public void mainMenu() {
         while(isRunning) {
             System.out.println("LIBRARY MAIN MENU:\n" +
-                    "[1] Add new book");
+                    "[1] Add new book" +
+                    "[2] Remove book\n" +
+                    "[3] List all books\n" +
+                    "[4] List all available books\n" +
+                    "[5] Add new user\n" +
+                    "[6] List all users\n" +
+                    "[7] Remove user\n");
 
             try {
                 // vi tar emot vår input som en string, då behöver vi också säga att våra cases ska vara
@@ -42,6 +48,27 @@ public class Menu {
                         // på en separat metod. Vi hade såklart kunna skriva alla den koden rakt här inne också men
                         // det hade blivit lite rörigare...
                         addNewBook();
+                        break;
+                    case "2":
+                        System.out.println("Removing book");
+                        removeBook();
+                        break;
+                    case "3":
+                        lib.allBooks();
+                        break;
+                    case "4":
+                        lib.allAvailableBooks();
+                        break;
+                    case "5":
+                        System.out.println("Adding user");
+                        addNewUser();
+                        break;
+                    case "6":
+                        lib.listAllUsers();
+                        break;
+                    case "7":
+                        System.out.println("Removing user");
+                        removeUser();
                         break;
                     default:
                         System.out.println("Default!");
@@ -90,7 +117,30 @@ public class Menu {
     }
 
 
+    public void removeBook() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please select the index you want to remove:\n");
+        lib.allBooks();
+        int i = input.nextInt();
+        lib.removeBook(i);
+        lib.allBooks();
+    }
 
+    public void addNewUser() {
+        System.out.println("Please add username: ");
+        String username = input.nextLine();
+        User user1 = new User(username);
+        lib.addUser(user1);
+    }
+
+    public void removeUser() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please select the index of the user you want to remove:\n");
+        lib.listAllUsers();
+        int i = input.nextInt();
+        lib.removeUser(i);
+        lib.listAllUsers();
+    }
 
 
 
